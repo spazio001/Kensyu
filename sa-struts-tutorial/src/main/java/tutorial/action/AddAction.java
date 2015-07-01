@@ -7,6 +7,10 @@ import org.seasar.struts.annotation.Execute;
 
 import tutorial.form.AddForm;
 
+/**
+ * @author k_hayakawa
+ *
+ */
 public class AddAction {
 
     public Integer result;

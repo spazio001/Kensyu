@@ -13,12 +13,14 @@ public class ForeachUpdateAction {
 	@Resource
 	protected ForeachUpdateForm foreachUpdateForm;
 
+	//初期表示
 	@Execute(validator = false)
 	public String index() {
 		foreachUpdateForm.initialize();
 		return "index.jsp";
 	}
 
+	//ボタン押下時に実行
 	@Execute(validator = false)
 	public String submit() {
 		return "index.jsp";

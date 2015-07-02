@@ -14,12 +14,14 @@ import tutorial.form.ForeachButtonForm;
 
 public class ForeachButtonAction {
 
+    //抽象するリストの宣言
 	public List<Map<String, Object>> mapItems = new ArrayList<Map<String, Object>>();
 
 	@ActionForm
 	@Resource
 	protected ForeachButtonForm foreachButtonForm;
 
+	//リストを作成し、初期表示
 	@Execute(validator = false)
 	public String index() {
 		for (int i = 0; i < 10; i++) {
@@ -31,6 +33,7 @@ public class ForeachButtonAction {
 		return "index.jsp";
 	}
 
+	//ボタン押下時に実行
 	@Execute(validator = false)
 	public String result() {
 		return "result.jsp";

@@ -14,10 +14,12 @@ public class CheckboxForm implements Serializable {
 
 	public boolean check2;
 
+	//初期では「check2」にチェックが入っている状況
 	public void initialize() {
 		check2 = true;
 	}
 
+	//reset()が実行されたときには、チェックなし
 	public void reset() {
 		check1 = false;
 		check2 = false;

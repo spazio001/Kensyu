@@ -14,12 +14,14 @@ import tutorial.form.ForeachForm;
 
 public class ForeachAction {
 
+    //抽出するリストの宣言
 	public List<Map<String, Object>> mapItems = new ArrayList<Map<String, Object>>();
 
 	@ActionForm
 	@Resource
 	protected ForeachForm foreachForm;
 
+	//リストを作成し、初期表示する
 	@Execute(validator = false)
 	public String index() {
 		for (int i = 0; i < 10; i++) {
@@ -31,6 +33,7 @@ public class ForeachAction {
 		return "index.jsp";
 	}
 
+	//アンカー押下時に、idをパラメータの値として取得する。
 	@Execute(validator = false, urlPattern = "result/{id}")
 	public String result() {
 		return "result.jsp";

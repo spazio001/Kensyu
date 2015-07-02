@@ -11,9 +11,11 @@ public class SessionForm implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	//テキストフィールドの必須チェック
 	@Required
 	public String first;
 
+    //テキストフィールドの必須チェック(secondに値が入力されているかを検証)
 	@Required(target = "goThird")
 	public String second;
 }

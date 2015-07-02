@@ -19,6 +19,7 @@ public class DownloadAction {
         return "index.jsp";
     }
 
+    //ダウンロードボタン押下時の処理
     @Execute(validator = false)
     public String download() {
         try {

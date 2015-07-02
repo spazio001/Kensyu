@@ -13,6 +13,7 @@ public class NestedForeachUpdateAction {
 	@Resource
 	protected NestedForeachUpdateForm nestedForeachUpdateForm;
 
+	//初期表示
 	@Execute(validator = false)
 	public String index() {
 		nestedForeachUpdateForm.initialize();

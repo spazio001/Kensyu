@@ -13,6 +13,7 @@ public class ConditionAction {
 	@Resource
 	protected ConditionForm conditionForm;
 
+	//idの入力により、表示パターンが切り替わる。
 	@Execute(validator = false, urlPattern = "{id}")
 	public String index() {
 		return "index.jsp";

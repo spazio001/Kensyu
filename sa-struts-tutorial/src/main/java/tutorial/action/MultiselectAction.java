@@ -20,23 +20,27 @@ public class MultiselectAction {
 	@Resource
 	protected MultiselectForm multiselectForm;
 
+	//初期表示
 	@Execute(validator = false)
 	public String index() {
 		multiselectForm.initialize();
 		return "index.jsp";
 	}
 
+	//submitボタン押下時に実行
 	@Execute(validator = false, reset = "reset")
 	public String submit() {
 		setupSelect2List();
 		return "submit.jsp";
 	}
 
+	//submit2ボタン押下時に実行
 	@Execute(validator = false, reset = "reset2")
 	public String submit2() {
 		return "submit2.jsp";
 	}
 
+	//submit.jspの選択リストを作成
 	protected void setupSelect2List() {
 		select2List = new ArrayList<Map<String, String>>();
 		for (int i = 1; i <= 3; i++) {

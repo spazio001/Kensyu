@@ -14,6 +14,8 @@ public class CheckboxForm implements Serializable {
 
 	public boolean check2;
 
+	public String[] check3;
+
 	//初期では「check2」にチェックが入っている状況
 	public void initialize() {
 		check2 = true;

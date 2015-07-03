@@ -34,7 +34,7 @@ public class ForeachAction {
 	}
 
 	//アンカー押下時に、idをパラメータの値として取得する。
-	@Execute(validator = false, urlPattern = "result/{id}")
+	@Execute(validator = false, urlPattern = "result/{id}/{name}")
 	public String result() {
 		return "result.jsp";
 	}

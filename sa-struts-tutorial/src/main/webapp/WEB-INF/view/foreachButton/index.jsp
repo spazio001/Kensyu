@@ -16,6 +16,7 @@
 <td>
 <s:form>
 <html:hidden property="id" value="${m.id}"/>
+<html:hidden property="name" value="${m.name}"/>
 <input type="submit" name="result" value="結果ページへ"/>
 </s:form>
 </td>

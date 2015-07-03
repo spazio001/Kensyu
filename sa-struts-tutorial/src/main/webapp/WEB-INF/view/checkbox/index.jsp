@@ -12,6 +12,8 @@
 <s:form>
 <html:checkbox property="check1"/>check1
 <html:checkbox property="check2"/>check2<br />
+<html:checkbox property="check3"/>check3a
+<html:checkbox property="check3"/>check3b
 <input type="submit" name="submit" value="サブミット"/>
 </s:form>
 </body>

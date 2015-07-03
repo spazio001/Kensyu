@@ -14,6 +14,7 @@ public class MultiselectForm implements Serializable {
 
 	public String[] select2;
 
+	//初期表示の設定
 	public void initialize() {
 		select1 = new String[] { "2", "3" };
 		select2 = new String[0];

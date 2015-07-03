@@ -16,4 +16,10 @@ public class RedirectAction {
 	public String showGoogle() {
 		return "http://www.google.co.jp";
 	}
+
+    @Execute(validator = false)
+    public String showAmazon() {
+        return "http://www.amazon.co.jp?redirect=true";
+    }
+
 }

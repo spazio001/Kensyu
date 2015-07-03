@@ -13,12 +13,14 @@ public class TextareaAction {
 	@Resource
 	protected TextareaForm textareaForm;
 
+	//初期表示
 	@Execute(validator = false)
 	public String index() {
 		textareaForm.initialize();
 		return "index.jsp";
 	}
 
+	//submitボタン押下時に実行
 	@Execute(validator = false)
 	public String submit() {
 		return "index.jsp";

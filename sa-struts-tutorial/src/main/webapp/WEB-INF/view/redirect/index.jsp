@@ -11,6 +11,7 @@
 <html:errors/>
 <s:form>
 <input type="submit" name="showGoogle" value="Googleを表示"/>
+<input type="submit" name="showAmazon" value="Amazonを表示"/>
 </s:form>
 </body>
 </html>

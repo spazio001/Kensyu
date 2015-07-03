@@ -20,23 +20,29 @@ public class MultiboxAction {
 	@Resource
 	protected MultiboxForm multiboxForm;
 
+	//初期表示
 	@Execute(validator = false)
 	public String index() {
 		multiboxForm.initialize();
 		return "index.jsp";
 	}
 
+	//エラーの場合、reset()メソッドを実行
+	//submit押下時に実行
 	@Execute(validator = false, reset = "reset")
 	public String submit() {
 		setupCheck2List();
 		return "submit.jsp";
 	}
 
+    //エラーの場合、reset2()メソッドを実行
+    //submit2押下時に実行
 	@Execute(validator = false, reset = "reset2")
 	public String submit2() {
 		return "submit2.jsp";
 	}
 
+	//submit.jspでの選択リストの作成
 	protected void setupCheck2List() {
 		check2List = new ArrayList<Map<String, String>>();
 		for (int i = 1; i <= 3; i++) {

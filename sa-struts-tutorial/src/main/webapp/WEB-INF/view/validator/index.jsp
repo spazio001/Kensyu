@@ -12,7 +12,7 @@
 <s:form>
 <table>
 <tr>
-<td>バイト:</td><td><html:text property="byteText" errorStyleClass="err" /></td>
+<td>バイト:</td><td><html:text property="byteText" styleId="default" errorStyleClass="err" /></td>
 </tr>
 <tr>
 <td>短整数:</td><td><html:text property="shortText" errorStyleClass="err" /></td>

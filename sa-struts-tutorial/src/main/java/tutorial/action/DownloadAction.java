@@ -14,6 +14,7 @@ public class DownloadAction {
     @Resource
     protected HttpServletResponse response;
 
+    //初期表示
     @Execute(validator = false)
     public String index() {
         return "index.jsp";

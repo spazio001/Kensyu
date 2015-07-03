@@ -13,12 +13,14 @@ public class SelectAction {
 	@Resource
 	protected SelectForm selectForm;
 
+	//初期表示
 	@Execute(validator = false)
 	public String index() {
 		selectForm.initialize();
 		return "index.jsp";
 	}
 
+	//submit押下時に実行
 	@Execute(validator = false)
 	public String submit() {
 		return "index.jsp";

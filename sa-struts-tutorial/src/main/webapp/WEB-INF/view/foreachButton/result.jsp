@@ -8,5 +8,7 @@
 
 <h1>Tutorial: Foreach Button result</h1>
 id: ${f:h(id)}
+<br >
+name: ${f:h(name)}
 </body>
 </html>

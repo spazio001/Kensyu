@@ -23,12 +23,14 @@ public class UploadAction {
 	@Resource
 	protected ServletContext application;
 
+	//初期表示
 	@Execute(validator = false)
 	public String index() {
 		UploadUtil.checkSizeLimit(request);
 		return "index.jsp";
 	}
 
+	//アップロードボタン押下時に実行
 	@Execute(input = "index.jsp")
 	public String upload() {
 		upload(uploadForm.formFile);
@@ -38,6 +40,7 @@ public class UploadAction {
 		return "index.jsp";
 	}
 
+	//アップロードしたファイルの置き場所
 	protected void upload(FormFile file) {
 		String path = application.getRealPath("/WEB-INF/work/"
 			+ file.getFileName());

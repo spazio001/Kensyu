@@ -13,6 +13,7 @@ public class TilesAction {
 	@Resource
 	protected TilesForm tilesForm;
 
+	//初期表示
 	@Execute(validator = false)
 	public String index() {
 		return "index.jsp";

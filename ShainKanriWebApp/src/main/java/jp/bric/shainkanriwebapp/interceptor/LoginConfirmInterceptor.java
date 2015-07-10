@@ -33,13 +33,14 @@ public class LoginConfirmInterceptor extends AbstractInterceptor {
 	 * 実行されたActionに@Executeがついていたかどうか。
 	 * @param invocation
 	 * @return アノテーションがついていればtrue
+	 * Actionの実行前のため、意味がない。（今回）
 	 */
 	private boolean isExecuteMethod(MethodInvocation invocation) {
 		return invocation.getMethod().isAnnotationPresent(Execute.class);
 	}
 
 	/**
-	 * セッション上にDtoがあるか、あった場合その中にuserIDは保持されているか。
+	 * セッション上にDtoがあるか、あった場合その中にloginUserは保持されているか。
 	 * @return 上記の条件を両方満たしていればtrue
 	 */
 	private boolean isLoggedIn() {

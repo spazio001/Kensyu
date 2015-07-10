@@ -7,6 +7,7 @@
 <h1>社員検索</h1>
 <s:form action="/logout">
 <input type="submit" name="submit" value="ログアウト" />
+<input type="submit" name="submit" value="社員登録" />
 </s:form>
 </body>
 </html>

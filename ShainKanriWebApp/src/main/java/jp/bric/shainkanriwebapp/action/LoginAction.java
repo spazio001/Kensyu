@@ -37,7 +37,7 @@ public class LoginAction {
 
     //ログインボタン押下時
     @Execute(validator = true,input="login.jsp")
-    public String submit() {
+    public String login() {
     	//ログインのチェック
     	Users loginUser = usersExService.findByIdAndPassword(loginForm.loginUser, loginForm.loginPassword);
     	if( loginUser != null ) {

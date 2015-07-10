@@ -20,7 +20,7 @@
 パスワード：
 <html:text property="loginPassword"/>
 <p/>
-<input type="submit" name="submit" value="ログイン" />
+<input type="submit" name="login" value="ログイン" />
 </div>
 </s:form>
 </body>

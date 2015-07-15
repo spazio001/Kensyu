@@ -1,6 +1,6 @@
 package jp.bric.shainkanriwebapp.form;
 
-public class RenewalForm {
+public class SearchForm {
 
     public String shainNo;
 

@@ -5,17 +5,24 @@ import org.seasar.struts.annotation.Execute;
 
 public class LogoutAction {
 
-    //セッションの開始
-	//@Resource
-	//protected HttpSession session;
+	// セッションの開始
+	// @Resource
+	// protected HttpSession session;
 
-    @Execute(validator = false)
-    @RemoveSession(name = "userDataDto")
+	@Execute(validator = false)
+	@RemoveSession(name = "userDataDto")
 	public String index() {
-	    //セッションを破棄
-		//session.invalidate();
-        return "logout.jsp";
+		// セッションを破棄
+		// session.invalidate();
+		return "logout.jsp";
 
-    }
+	}
+
+	@Execute(validator = false)
+	public String close() {
+
+		return null;
+
+	}
 
 }

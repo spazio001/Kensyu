@@ -10,6 +10,10 @@ public class EntryForm {
 
     public String shainSex;
 
+    public String shainPost1;
+
+    public String shainPost2;
+
     public String shainPostcode;
 
     public String shainAddress;

@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
@@ -15,12 +14,11 @@ import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
 import org.seasar.struts.util.ActionMessagesUtil;
 
-import jp.bric.shainkanriwebapp.dto.UserDataDto;
 import jp.bric.shainkanriwebapp.entity.Shains;
 import jp.bric.shainkanriwebapp.form.EntryForm;
 import jp.bric.shainkanriwebapp.service.extend.ShainsExService;
 
-public class EntryAction {
+public class EntryAction extends AbstractShainKanriAction {
 
 	@ActionForm
 	@Resource
@@ -28,12 +26,6 @@ public class EntryAction {
 
 	@Resource
 	protected ShainsExService shainsExService;
-
-	@Resource
-	protected UserDataDto userDataDto;
-
-	@Resource
-	protected HttpSession session;
 
 	@Execute(validator = false)
 	public String index() {

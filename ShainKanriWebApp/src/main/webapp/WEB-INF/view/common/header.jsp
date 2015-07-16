@@ -9,7 +9,6 @@
 				<li><a href="${f:url('/entry/')}">社員登録</a></li>
 				<li><a href="${f:url('/shelfEntry/')}">社員一括登録</a></li>
 				<li><a href="${f:url('/logout/')}">ログアウト</a></li>
-				<li><a href="${f:url('/error/')}">エラー</a></li>
 			</ul>
 			<div class="">
 				<a class="navbar-text navbar-right">ユーザーID：${f:h(userDataDto.loginUser)}</a>

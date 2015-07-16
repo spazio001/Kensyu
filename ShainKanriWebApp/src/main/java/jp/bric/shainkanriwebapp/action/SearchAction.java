@@ -7,7 +7,7 @@ import org.seasar.struts.annotation.Execute;
 
 import jp.bric.shainkanriwebapp.form.SearchForm;
 
-public class SearchAction {
+public class SearchAction extends AbstractShainKanriAction {
 
 	@ActionForm
 	@Resource

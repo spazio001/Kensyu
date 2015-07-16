@@ -5,18 +5,17 @@ import javax.annotation.Resource;
 import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
 
-import jp.bric.shainkanriwebapp.form.ShelfEntryForm;
+import jp.bric.shainkanriwebapp.form.RenewalForm;
 
-public class ShelfEntryAction {
+public class UpdateAction extends AbstractShainKanriAction {
 
 	@ActionForm
 	@Resource
-	protected ShelfEntryForm shelfEntryForm;
+	protected RenewalForm renewalForm;
 
 	@Execute(validator = false)
 	public String index() {
-
-		return "shelfEntry.jsp";
+		return "renewal.jsp";
 
 	}
 
@@ -24,7 +23,7 @@ public class ShelfEntryAction {
 	public String entry() {
 
 		return "complete.jsp";
-
+		// }
 	}
 
 	// 登録完了から検索画面へ

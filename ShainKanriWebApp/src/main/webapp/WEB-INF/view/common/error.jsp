@@ -12,17 +12,14 @@
 <body>
 	<jsp:include page="/WEB-INF/view/common/header.jsp" />
 	<div class="container">
-		<s:form>
-			<html:errors />
-			<div class="text-center" style="padding: 15px 0">
-				<h1>エラー</h1>
-			</div>
-			<div class="text-center" style="padding: 15px 0">
-				予期せぬエラーが発生しました。</div>
-			<div class="text-center" style="padding: 15px 0">
-				<input type="submit" name="research" value="検索画面に戻る" />
-			</div>
-		</s:form>
+		<div class="text-center" style="padding: 15px 0">
+			<h1>エラー</h1>
+		</div>
+		<div class="text-center" style="padding: 15px 0">
+			予期せぬエラーが発生しました。</div>
+		<div class="text-center" style="padding: 15px 0">
+			<a href="${f:url('/search/')}" class="btn btn-default">検索画面に戻る</a>
+		</div>
 	</div>
 </body>
 </html>

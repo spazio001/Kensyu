@@ -7,7 +7,7 @@
 <link href="${f:url('/css/bootstrap-responsive.min.css')}"
 	rel="stylesheet">
 <script src="${f:url('/js/bootstrap.min.js')}"></script>
-<title>エラー</title>
+<title>社員更新完了</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/common/header.jsp" />
@@ -15,10 +15,9 @@
 		<s:form>
 			<html:errors />
 			<div class="text-center" style="padding: 15px 0">
-				<h1>エラー</h1>
+				<h1>社員更新完了</h1>
 			</div>
-			<div class="text-center" style="padding: 15px 0">
-				予期せぬエラーが発生しました。</div>
+			<div class="text-center" style="padding: 15px 0">社員が更新されました。</div>
 			<div class="text-center" style="padding: 15px 0">
 				<input type="submit" name="research" value="検索画面に戻る" />
 			</div>

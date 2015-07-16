@@ -10,7 +10,7 @@
 <title>社員登録</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/common/header.jsp"/>
+	<jsp:include page="/WEB-INF/view/common/header.jsp" />
 
 	<div class="container">
 		<html:errors />
@@ -44,12 +44,14 @@
 					<div class="form-group">
 						<label for="shainSex" class="control-label col-lg-2">性別：</label>
 						<div class="col-lg-5">
-							<label class="radio-inline"> <input type="radio"
-								name="inlineRadioOptions" id="man" value="1">男性
-							</label> <label class="radio-inline"> <input type="radio"
-								name="inlineRadioOptions" id="woman" value="2">女性
-							</label> <label class="radio-inline"> <input type="radio"
-								name="inlineRadioOptions" id="other" value="3">その他
+							<label class="radio-inline">
+								<html:radio property="shainSex" styleId="man" value="1"/>男性
+							</label>
+							<label class="radio-inline">
+								<html:radio property="shainSex" styleId="woman" value="2"/>女性
+							</label>
+							<label class="radio-inline">
+								<html:radio property="shainSex" styleId="other" value="3"/>その他
 							</label>
 						</div>
 					</div>
@@ -77,12 +79,6 @@
 						<div class="text-left" style="padding: 6px 0">
 							<label>例）99999999999（ハイフン除く）</label>
 						</div>
-					</div>
-					<div class="form-group">
-						<html:hidden styleClass="form-control" property="insertTime" />
-					</div>
-					<div class="form-group">
-						<html:hidden styleClass="form-control" property="lastUpdateTime" />
 					</div>
 					<div class="form-group">
 						<div class="text-center">

@@ -15,12 +15,23 @@
  */
 package jp.bric.shainkanriwebapp.action;
 
+import javax.annotation.Resource;
+
+import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
+
+import jp.bric.shainkanriwebapp.form.LoginForm;
 
 public class IndexAction {
 
-    @Execute(validator = false)
+	@ActionForm
+	@Resource
+	protected LoginForm loginForm;
+
+	@Execute(validator = false)
 	public String index() {
-        return "index.jsp";
-	}
+
+		return "/search/";
+
+    }
 }

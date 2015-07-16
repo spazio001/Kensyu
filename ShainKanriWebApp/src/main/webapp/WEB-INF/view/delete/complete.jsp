@@ -7,20 +7,19 @@
 <link href="${f:url('/css/bootstrap-responsive.min.css')}"
 	rel="stylesheet">
 <script src="${f:url('/js/bootstrap.min.js')}"></script>
-<title>ログアウト</title>
+<title>社員削除完了</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/view/common/header.jsp" />
 	<div class="container">
 		<s:form>
 			<html:errors />
-			<div class="text-center" style="padding:15px 0">
-				<h1>社員管理システム</h1>
+			<div class="text-center" style="padding: 15px 0">
+				<h1>社員削除完了</h1>
 			</div>
-			<div class="text-center" style="padding:15px 0">
-				ログアウトしました。
-			</div>
-			<div class="text-center" style="padding:15px 0">
-				<input type="submit" name="close" value="閉じる"/>
+			<div class="text-center" style="padding: 15px 0">社員が削除されました。</div>
+			<div class="text-center" style="padding: 15px 0">
+				<input type="submit" name="research" value="検索画面に戻る" />
 			</div>
 		</s:form>
 	</div>

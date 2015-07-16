@@ -16,4 +16,14 @@ public class UserDataDto implements Serializable {
 
 	//権限（0:管理者、1:一般）
 	public Integer roleType;
+
+	public String getLoginUser() {
+		return loginUser;
+	}
+
+	public Integer getRoleType() {
+		return roleType;
+	}
+
+
 }

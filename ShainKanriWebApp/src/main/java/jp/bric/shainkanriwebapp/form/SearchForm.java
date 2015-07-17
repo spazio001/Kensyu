@@ -16,20 +16,20 @@ public class SearchForm {
 
 	// 必須チェック
 	@Required(arg0 = @Arg(key = "labels.shainBirthday") )
-//	@DateType(datePatternStrict = "yyyy/MM/dd")
+	// @DateType(datePatternStrict = "yyyy/MM/dd")
 	public String shainBirthday;
 
 	// 必須チェック
-//	@Required(arg0 = @Arg(key = "labels.shainSex") )
+	// @Required(arg0 = @Arg(key = "labels.shainSex") )
 	public String shainSex;
 
 	// 必須チェック
-//	@Required(arg0 = @Arg(key = "labels.shainPost1") )
-//	public String shainPost1;
+	// @Required(arg0 = @Arg(key = "labels.shainPost1") )
+	// public String shainPost1;
 
 	// 必須チェック
-//	@Required(arg0 = @Arg(key = "labels.shainPost2") )
-//	public String shainPost2;
+	// @Required(arg0 = @Arg(key = "labels.shainPost2") )
+	// public String shainPost2;
 
 	// 必須チェック
 	@Required(arg0 = @Arg(key = "labels.shainPostcode") )
@@ -43,8 +43,6 @@ public class SearchForm {
 	@Required(arg0 = @Arg(key = "labels.shainTelno") )
 	public String shainTelno;
 
-	public String insertTime;
-
-	public String lastUpdateTime;
+	public String age;
 
 }

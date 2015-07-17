@@ -50,9 +50,6 @@
 							<label class="radio-inline">
 								<html:radio property="shainSex" styleId="woman" value="2"/>女性
 							</label>
-							<label class="radio-inline">
-								<html:radio property="shainSex" styleId="other" value="3"/>その他
-							</label>
 						</div>
 					</div>
 					<div class="form-group">

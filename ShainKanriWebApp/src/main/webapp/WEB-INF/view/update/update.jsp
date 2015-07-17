@@ -48,8 +48,6 @@
 								name="inlineRadioOptions" id="man" value="1">男性
 							</label> <label class="radio-inline"> <input type="radio"
 								name="inlineRadioOptions" id="woman" value="2">女性
-							</label> <label class="radio-inline"> <input type="radio"
-								name="inlineRadioOptions" id="other" value="3">その他
 							</label>
 						</div>
 					</div>

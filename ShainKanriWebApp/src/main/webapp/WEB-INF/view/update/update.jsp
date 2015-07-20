@@ -1,8 +1,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"
-	type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <link href="${f:url('/css/bootstrap.min.css')}" rel="stylesheet">
 <link href="${f:url('/css/bootstrap-responsive.min.css')}"
 	rel="stylesheet">

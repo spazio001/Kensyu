@@ -44,11 +44,10 @@
 					<div class="form-group">
 						<label for="shainSex" class="control-label col-lg-2">性別：</label>
 						<div class="col-lg-5">
-							<label class="radio-inline">
-								<html:radio property="shainSex" styleId="man" value="1"/>男性
-							</label>
-							<label class="radio-inline">
-								<html:radio property="shainSex" styleId="woman" value="2"/>女性
+							<label class="radio-inline"> <input type="radio"
+								name="inlineRadioOptions" id="man" value="1">男性
+							</label> <label class="radio-inline"> <input type="radio"
+								name="inlineRadioOptions" id="woman" value="2">女性
 							</label>
 						</div>
 					</div>

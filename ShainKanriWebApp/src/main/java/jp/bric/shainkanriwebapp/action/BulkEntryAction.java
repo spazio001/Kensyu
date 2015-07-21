@@ -5,13 +5,13 @@ import javax.annotation.Resource;
 import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
 
-import jp.bric.shainkanriwebapp.form.ShelfEntryForm;
+import jp.bric.shainkanriwebapp.form.BulkEntryForm;
 
 public class BulkEntryAction extends AbstractShainKanriAction {
 
 	@ActionForm
 	@Resource
-	protected ShelfEntryForm shelfEntryForm;
+	protected BulkEntryForm shelfEntryForm;
 
 	@Execute(validator = false)
 	public String index() {

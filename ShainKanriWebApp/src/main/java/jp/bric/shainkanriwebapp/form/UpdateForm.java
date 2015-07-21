@@ -4,7 +4,7 @@ import org.seasar.struts.annotation.Arg;
 import org.seasar.struts.annotation.IntegerType;
 import org.seasar.struts.annotation.Required;
 
-public class RenewalForm {
+public class UpdateForm {
 	// 必須チェック
 	@Required(arg0 = @Arg(key = "labels.shainNo") )
 	@IntegerType

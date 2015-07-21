@@ -41,10 +41,10 @@
 				</div>
 				<label for="shainSex" class="control-label col-lg-1">性別：</label>
 				<div class="col-lg-2">
-					<label class="radio-inline"> <input type="radio"
-						name="inlineRadioOptions" id="man" value="1">男性
-					</label> <label class="radio-inline"> <input type="radio"
-						name="inlineRadioOptions" id="woman" value="2">女性
+					<label class="checkbox-inline"> <input type="checkbox"
+						name="shainSex" id="man" value="1">男性
+					</label> <label class="checkbox-inline"> <input type="checkbox"
+						name="shainSex" id="woman" value="2">女性
 					</label>
 				</div>
 			</div>
@@ -89,19 +89,20 @@
 						<th width=150;>電話番号</th>
 					</tr>
 				</thead>
+				<c:forEach var="shain" item="${shaindata} varStatus="status">
 				<tbody>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-				</tbody>
+						<tr>
+							<td>"${shain.shainNo}"</td>
+							<td>"${shain.shainName}"</td>
+							<td>"${shain.shainBirthday}"</td>
+							<td>"${shain.age}"</td>
+							<td>"${shain.shainSex}"</td>
+							<td>"${shain.shainPostcode}"</td>
+							<td>"${shain.shainAddress}"</td>
+							<td>"${shain.shainTelno}"</td>
+						</tr>
+					</tbody>
+				</c:forEach>
 			</table>
 			<div id="searchResultList"></div>
 			<%--

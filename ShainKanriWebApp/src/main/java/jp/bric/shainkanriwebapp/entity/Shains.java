@@ -3,6 +3,7 @@ package jp.bric.shainkanriwebapp.entity;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
+
 import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +11,7 @@ import javax.persistence.Id;
 
 /**
  * Shainsエンティティクラス
- * 
+ *
  */
 @Entity
 @Generated(value = {"S2JDBC-Gen 2.4.46", "org.seasar.extension.jdbc.gen.internal.model.EntityModelFactoryImpl"}, date = "2015/07/08 17:33:22")

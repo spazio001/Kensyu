@@ -5,13 +5,13 @@ import javax.annotation.Resource;
 import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
 
-import jp.bric.shainkanriwebapp.form.RenewalForm;
+import jp.bric.shainkanriwebapp.form.UpdateForm;
 
 public class UpdateAction extends AbstractShainKanriAction {
 
 	@ActionForm
 	@Resource
-	protected RenewalForm renewalForm;
+	protected UpdateForm renewalForm;
 
 	@Execute(validator = false)
 	public String index() {

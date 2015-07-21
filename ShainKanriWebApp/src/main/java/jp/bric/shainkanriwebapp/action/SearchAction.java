@@ -20,4 +20,11 @@ public class SearchAction extends AbstractShainKanriAction {
 
 	}
 
+	@Execute(validator = false, input = "search.jsp")
+	public String search() {
+	//検索ボタン押下時の処理
+		return null;
+	}
+
+
 }

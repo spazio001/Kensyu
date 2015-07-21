@@ -1,5 +1,7 @@
 package jp.bric.shainkanriwebapp.action.ajax;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,14 +9,19 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
+import org.seasar.struts.util.ActionMessagesUtil;
 import org.seasar.struts.util.ResponseUtil;
 
 import jp.bric.shainkanriwebapp.action.AbstractShainKanriAction;
 import jp.bric.shainkanriwebapp.dto.SearchResultDto;
 import jp.bric.shainkanriwebapp.dto.SearchResultItemDto;
+import jp.bric.shainkanriwebapp.entity.Shains;
 import jp.bric.shainkanriwebapp.form.SearchForm;
+import jp.bric.shainkanriwebapp.service.extend.ShainsExService;
 import net.arnx.jsonic.JSON;
 
 public class SearchAction extends AbstractShainKanriAction {
@@ -23,19 +30,52 @@ public class SearchAction extends AbstractShainKanriAction {
 	@Resource
 	protected SearchForm searchForm;
 
+	@Resource
+	protected ShainsExService shainsExService;
+
 	@Execute(validator = false)
 	public String search() {
 		//TODO データベースの検索をして、データを取ってくる
+		Shains shainSearch = shainsExService.shainsExService(searchForm.shainNo);
+		if (shainSearch == null) {
+
+			// 社員番号が重複していなかった場合、登録する
+			Shains shain = new Shains();
+			shain.shainNo = Long.parseLong(searchForm.shainNo);
+			shain.shainName = searchForm.shainName;
+			DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+			long shainBirthdayAsLong = df.parse(searchForm.shainBirthday).getTime();
+			shain.shainBirthday = new Date(shainBirthdayAsLong);
+			shain.shainSex = Integer.parseInt(searchForm.shainSex);
+			shain.shainPostcode = searchForm.shainPostcode;
+			shain.shainAddress = searchForm.shainAddress;
+			shain.shainTelno = searchForm.shainTelno;
+			long now = System.currentTimeMillis();
+			shain.insertTime = new Timestamp(now);
+			shain.lastUpdateTime = new Timestamp(now);
+
+			shainsExService.shainsExServiceTx(shain);
+
+			return "complete.jsp";
+
+		} else {
+			// エラーメッセージを格納する
+			ActionMessages errors = new ActionMessages();
+			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.existShain", searchForm.shainNo));
+			ActionMessagesUtil.saveErrors(session, errors);
+
+			return "entry.jsp";
+		}
 
 
+	}
 
+	//TODO 検索結果をDtoに詰め込み、JSONで返却する。
+	SearchResultDto searchResultDto = new SearchResultDto();searchResultDto.count=120;
 
-		//TODO 検索結果をDtoに詰め込み、JSONで返却する。
-		SearchResultDto searchResultDto = new SearchResultDto();
-		searchResultDto.count = 120;
+	ArrayList<SearchResultItemDto> resultList = new ArrayList<SearchResultItemDto>();resultList.add(
 
-		ArrayList<SearchResultItemDto> resultList = new ArrayList<SearchResultItemDto>();
-		resultList.add(makeDummyData(5L, "山川１", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	makeDummyData(5L, "山川１", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
 		resultList.add(makeDummyData(6L, "山川２", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
 		resultList.add(makeDummyData(7L, "山川３", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
 		resultList.add(makeDummyData(8L, "山川４", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
@@ -83,6 +123,5 @@ public class SearchAction extends AbstractShainKanriAction {
 		}
 		return itemDto;
 	}
-
 
 }

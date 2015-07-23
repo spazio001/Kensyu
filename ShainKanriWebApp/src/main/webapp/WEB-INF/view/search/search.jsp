@@ -74,36 +74,34 @@
 					<input type="button" id="searchButton" name="search" value="検索" />
 				</div>
 			</div>
-			<div class="text-right">１ページ：２０件表示</div>
-			<table class="table table-bordered table-hover table-condensed">
-				<thead>
-					<tr>
-						<th width=40;></th>
-						<th width=80;>社員番号</th>
-						<th width=200;>氏名</th>
-						<th width=80;>生年月日</th>
-						<th width=50;>年齢</th>
-						<th width=50:>性別</th>
-						<th width=80;>郵便番号</th>
-						<th>住所</th>
-						<th width=150;>電話番号</th>
-					</tr>
-				</thead>
-				<c:forEach var="shain" item="${shaindata} varStatus="status">
-				<tbody>
-						<tr>
-							<td>"${shain.shainNo}"</td>
-							<td>"${shain.shainName}"</td>
-							<td>"${shain.shainBirthday}"</td>
-							<td>"${shain.age}"</td>
-							<td>"${shain.shainSex}"</td>
-							<td>"${shain.shainPostcode}"</td>
-							<td>"${shain.shainAddress}"</td>
-							<td>"${shain.shainTelno}"</td>
-						</tr>
-					</tbody>
-				</c:forEach>
-			</table>
+			<!-- 			<table class="table table-bordered table-hover table-condensed"> -->
+			<!-- 				<thead> -->
+			<!-- 					<tr> -->
+			<!-- 						<th width=40;></th> -->
+			<!-- 						<th width=80;>社員番号</th> -->
+			<!-- 						<th width=200;>氏名</th> -->
+			<!-- 						<th width=80;>生年月日</th> -->
+			<!-- 						<th width=50;>年齢</th> -->
+			<!-- 						<th width=50:>性別</th> -->
+			<!-- 						<th width=80;>郵便番号</th> -->
+			<!-- 						<th>住所</th> -->
+			<!-- 						<th width=150;>電話番号</th> -->
+			<!-- 					</tr> -->
+			<!-- 				</thead> -->
+			<%-- 				<c:forEach var="shain" item="${shaindata} varStatus="status"> --%>
+			<!-- 				<tbody> -->
+			<!-- 						<tr> -->
+			<%-- 							<td>"${shain.shainNo}"</td> --%>
+			<%-- 							<td>"${shain.shainName}"</td> --%>
+			<%-- 							<td>"${shain.shainBirthday}"</td> --%>
+			<%-- 							<td>"${shain.age}"</td> --%>
+			<%-- 							<td>"${shain.shainSex}"</td> --%>
+			<%-- 							<td>"${shain.shainPostcode}"</td> --%>
+			<%-- 							<td>"${shain.shainAddress}"</td> --%>
+			<%-- 							<td>"${shain.shainTelno}"</td> --%>
+			<!-- 						</tr> -->
+			<!-- 					</tbody> -->
+			<%-- 				</c:forEach> --%>
 			<div id="searchResultList"></div>
 			<%--
 			<div class="text-right">
@@ -125,6 +123,31 @@
 				</nav>
 			</div>
  --%>
+		</s:form>
+	</div>
+	<script id="search-result-template" type="text/x-handlebars-template">
+			<div class="text-right">１ページ：２０件表示</div>
+			<table class="table table-bordered table-hover table-condensed">
+				<thead>
+					<tr>
+						<th width=40;></th>
+						<th width=80;>社員番号</th>
+						<th width=200;>氏名</th>
+						<th width=80;>生年月日</th>
+						<th width=50;>年齢</th>
+						<th width=50:>性別</th>
+						<th width=80;>郵便番号</th>
+						<th>住所</th>
+						<th width=150;>電話番号</th>
+					</tr>
+				</thead>
+			</table>
+			<h1>{{count}}</h1>
+			{{#resultList}}
+				<div>
+					{{shainNo}} {{shainName}}
+				</div>
+			{{/resultList}}
 			<div class="form-group">
 				<div class="text-center">
 					<div class="col-lg-4"></div>
@@ -137,18 +160,6 @@
 				</div>
 				<div class="col-lg-4"></div>
 			</div>
-
-		</s:form>
-	</div>
-	<script id="search-result-template" type="text/x-handlebars-template">
-		<div class="">
-			<h1>{{count}}</h1>
-			{{#resultList}}
-				<div>
-					{{shainNo}}
-				</div>
-			{{/resultList}}
-		</div>
 	</script>
 	<script type="text/javascript">
 		$(function() {
@@ -157,6 +168,7 @@
 					type : 'POST',
 					url : "${f:url('/ajax/search')}",
 					data : $("#searchForm").serialize(),
+					dataType : "json",
 					success : function(data, textStatus, jqXHR) {
 						var source = $("#search-result-template").html();
 						var template = Handlebars.compile(source);

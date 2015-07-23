@@ -23,9 +23,10 @@ public class ShainsExService extends ShainsService {
 	}
 
 	//検索する社員
-	public Shains shainsExService(String shainNo) {
+	public Shains shainsExService(String shainNo,String shainName) {
 		SimpleWhere where = new SimpleWhere();
 		where.eq(shainNo(), shainNo);
+		where.contains(shainName(), shainName);
 
 		return select().where(where).getSingleResult();
 	}

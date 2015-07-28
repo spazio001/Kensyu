@@ -15,15 +15,15 @@ public class ShainsExService extends ShainsService {
 	}
 
 	//同じ社員番号検索
-	public Shains findByShainNo(String shainNo) {
+	public Shains findByShainNoTx(String shainNo) {
 		SimpleWhere where = new SimpleWhere();
 		where.eq(shainNo(), shainNo);
 
 		return select().where(where).getSingleResult();
 	}
 
-	//検索する社員
-	public Shains shainsExService(String shainNo,String shainName) {
+	//社員を検索する（社員番号と氏名）
+	public Shains findByShainsTx(String shainNo,String shainName) {
 		SimpleWhere where = new SimpleWhere();
 		where.eq(shainNo(), shainNo);
 		where.contains(shainName(), shainName);

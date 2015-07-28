@@ -38,7 +38,7 @@
 					<div class="form-group">
 						<label for="loginPassword" class="control-label col-lg-2">パスワード：</label>
 						<div class="col-lg-3">
-							<html:text styleClass="form-control" property="loginPassword" />
+							<html:password styleClass="form-control" property="loginPassword" />
 						</div>
 					</div>
 					<div class="form-group">

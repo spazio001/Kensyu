@@ -37,7 +37,7 @@ public class EntryAction extends AbstractShainKanriAction {
 	@Execute(validator = true, input = "entry.jsp")
 	public String entry() throws ParseException {
 		// 社員番号の重複チェック
-		Shains shainForCheck = shainsExService.findByShainNo(entryForm.shainNo);
+		Shains shainForCheck = shainsExService.findByShainNoTx(entryForm.shainNo);
 		if (shainForCheck == null) {
 
 			// 社員番号が重複していなかった場合、登録する

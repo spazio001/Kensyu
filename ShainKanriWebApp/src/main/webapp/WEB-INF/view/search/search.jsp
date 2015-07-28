@@ -127,27 +127,35 @@
 	</div>
 	<script id="search-result-template" type="text/x-handlebars-template">
 			<div class="text-right">１ページ：２０件表示</div>
-			<table class="table table-bordered table-hover table-condensed">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th width=40;></th>
-						<th width=80;>社員番号</th>
-						<th width=200;>氏名</th>
-						<th width=80;>生年月日</th>
-						<th width=50;>年齢</th>
-						<th width=50:>性別</th>
-						<th width=80;>郵便番号</th>
+						<th width="40";></th>
+						<th width="100";>社員番号</th>
+						<th width="200";>氏名</th>
+						<th width="100";>生年月日</th>
+						<th width="50";>年齢</th>
+						<th width="50":>性別</th>
+						<th width="100";>郵便番号</th>
 						<th>住所</th>
-						<th width=150;>電話番号</th>
+						<th width="150";>電話番号</th>
 					</tr>
+			{{#resultList}}
+					<tr>
+						<td align="center";><input type="radio" name="shain" value=""></td>
+						<td>{{shainNo}}</td>
+						<td>{{shainName}}</td>
+						<td>{{shainBirthday}}</td>
+						<td>{{age}}</td>
+						<td>{{shainSex}}</td>
+						<td>{{shainPostcode}}</td>
+						<td>{{shainAddress}}</td>
+						<td>{{shainTelno}}</td>
+					</tr>
+			{{/resultList}}
 				</thead>
 			</table>
 			<h1>{{count}}</h1>
-			{{#resultList}}
-				<div>
-					{{shainNo}} {{shainName}}
-				</div>
-			{{/resultList}}
 			<div class="form-group">
 				<div class="text-center">
 					<div class="col-lg-4"></div>

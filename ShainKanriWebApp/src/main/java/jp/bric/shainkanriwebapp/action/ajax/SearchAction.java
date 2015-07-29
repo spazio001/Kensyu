@@ -1,5 +1,8 @@
 package jp.bric.shainkanriwebapp.action.ajax;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.struts.action.ActionMessage;
@@ -7,11 +10,15 @@ import org.apache.struts.action.ActionMessages;
 import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
 import org.seasar.struts.util.ActionMessagesUtil;
+import org.seasar.struts.util.ResponseUtil;
 
 import jp.bric.shainkanriwebapp.action.AbstractShainKanriAction;
+import jp.bric.shainkanriwebapp.dto.SearchResultDto;
+import jp.bric.shainkanriwebapp.dto.SearchResultItemDto;
 import jp.bric.shainkanriwebapp.entity.Shains;
 import jp.bric.shainkanriwebapp.form.SearchForm;
 import jp.bric.shainkanriwebapp.service.extend.ShainsExService;
+import net.arnx.jsonic.JSON;
 
 public class SearchAction extends AbstractShainKanriAction {
 
@@ -25,11 +32,36 @@ public class SearchAction extends AbstractShainKanriAction {
 	@Execute(validator = false)
 	public String search() {
 		//TODO データベースの検索をして、データを取ってくる
-		Shains shainsSearch = shainsExService.findByShainsTx(searchForm.shainNo, searchForm.shainName);
-		if (shainsSearch != null) {
+		//全件データ取得
+		List<Shains> shainsSearch = shainsExService.findByShainAll(searchForm.shainNo, searchForm.shainName, searchForm.shainSex, searchForm.shainPostcode, searchForm.shainAddress, searchForm.shainTelno);
+		if (shainsSearch.size() != 0) {
+			//TODO 検索結果をDtoに詰め込み、JSONで返却する。
+			SearchResultDto searchResultDto = new SearchResultDto();
+			//TODO 正しくSQLを発行し、値を取得する　暫定版：件数（カウント）の初期化
+			searchResultDto.count = 0;
 
-			//社員を表示する
-			return "search.jsp";
+			ArrayList<SearchResultItemDto> resultList = new ArrayList<SearchResultItemDto>();
+
+			for(Shains shain : shainsSearch){
+				//
+				SearchResultItemDto itemDto = new SearchResultItemDto();
+				itemDto.shainNo = shain.shainNo;
+				itemDto.shainName = shain.shainName;
+				itemDto.shainBirthday = shain.shainBirthday;
+				itemDto.shainSex = shain.shainSex;
+				itemDto.shainPostcode = shain.shainPostcode;
+				itemDto.shainAddress = shain.shainAddress;
+				itemDto.shainTelno = shain.shainTelno;
+				//TODO 年齢を算出する。
+				resultList.add(itemDto);
+			}
+
+			searchResultDto.resultList = resultList;
+
+			String json = JSON.encode(searchResultDto);
+			ResponseUtil.write(json);
+
+			return null;
 
 		} else {
 			// エラーメッセージを格納する
@@ -41,11 +73,12 @@ public class SearchAction extends AbstractShainKanriAction {
 		}
 	}
 }
+
 		//TODO 検索結果をDtoに詰め込み、JSONで返却する。
 //		SearchResultDto searchResultDto = new SearchResultDto();
-		//件数（カウント）の初期化
+//		//件数（カウント）の初期化
 //		searchResultDto.count = 0;
-
+//
 //		ArrayList<SearchResultItemDto> resultList = new ArrayList<SearchResultItemDto>();
 //		resultList.add(ResultData(searchForm.shainNo,searchForm.shainName,searchForm.shainBirthday,searchForm.shainSex,searchForm.shainPostcode,searchForm.shainAddress,searchForm.shainTelno));
 		//resultList.add(
@@ -78,17 +111,15 @@ public class SearchAction extends AbstractShainKanriAction {
 //		return null;
 //
 //	}
-//
-//	private SearchResultItemDto ResultData(Long shainNo, String shainName, String shainBirthday, Integer
-//			shainSex,
-//			String shainPostcode, String shainAddress, String shainTelno) {
+
+//	private SearchResultItemDto resultData(shainsSearch) {
 //		SearchResultItemDto itemDto = new SearchResultItemDto();
 //		try {
-//			itemDto.shainNo = shainNo;
+//			itemDto.shainNo = Long.parseLong(shainNo);
 //			itemDto.shainName = shainName;
 //			SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 //			itemDto.shainBirthday = format.parse(shainBirthday);
-//			itemDto.shainSex = shainSex;
+//			itemDto.shainSex = Integer.parseInt(shainSex);
 //			itemDto.shainPostcode = shainPostcode;
 //			itemDto.shainAddress = shainAddress;
 //			itemDto.shainTelno = shainTelno;
@@ -100,5 +131,3 @@ public class SearchAction extends AbstractShainKanriAction {
 //		}
 //		return itemDto;
 //	}
-//
-//}

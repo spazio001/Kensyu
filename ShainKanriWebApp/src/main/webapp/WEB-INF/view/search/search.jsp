@@ -28,15 +28,15 @@
 				</div>
 				<label for="shainBirthday" class="control-label col-lg-1">年齢：</label>
 				<div class="col-lg-2" style="padding: 5px 0">
-					<html:select property="age" value="0">
-						<html:option value="0">選択してください</html:option>
-						<html:option value="1">０～１０代</html:option>
-						<html:option value="2">１０～２０代</html:option>
-						<html:option value="3">２０～３０代</html:option>
-						<html:option value="4">３０～４０代</html:option>
-						<html:option value="5">４０～５０代</html:option>
-						<html:option value="6">５０～６０代</html:option>
-						<html:option value="7">それ以上</html:option>
+					<html:select property="ageRenge" value="none">
+						<html:option value="none">選択してください</html:option>
+						<html:option value="0-9">０～９歳</html:option>
+						<html:option value="10-19">１０～１９歳</html:option>
+						<html:option value="20-29">２０～２９歳</html:option>
+						<html:option value="30-39">３０～３９歳</html:option>
+						<html:option value="40-49">４０～４９歳</html:option>
+						<html:option value="50-59">５０～５９歳</html:option>
+						<html:option value="60-200">６０歳以上</html:option>
 					</html:select>
 				</div>
 				<label for="shainSex" class="control-label col-lg-1">性別：</label>

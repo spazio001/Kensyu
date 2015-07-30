@@ -1,6 +1,8 @@
 package jp.bric.shainkanriwebapp.action.ajax;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -32,8 +34,68 @@ public class SearchAction extends AbstractShainKanriAction {
 	@Execute(validator = false)
 	public String search() {
 		//TODO データベースの検索をして、データを取ってくる
+		Date birthdayFrom = null;
+		Date birthdayTo = null;
+
+		//TODO 年齢のFROM-TOをセット
+		if(!(searchForm.ageRenge.equals("none"))){
+			String[] ageRangeArray = searchForm.ageRenge.split("-");
+
+			birthdayFrom = calcBirdayFrom(Integer.parseInt(ageRangeArray[1]));
+			birthdayTo = calcBirdayTo(Integer.parseInt(ageRangeArray[0]));
+
+
+			//birthdayTo = new Date();
+		}
+
+		//現在の日時を取得(TO)
+//		Date timeTo = new Timestamp(System.currentTimeMillis());
+
+
+
+		//０～９歳が選択されていた場合
+//		if(fromTo.equals("0-9")){
+//			//FROMを設定（10年前）
+//			timeFrom.set(Calendar.YEAR,-10);
+//
+//		}else if(fromTo.equals("10-19")){
+//			//FROMを設定（20年前）
+//			timeFrom.set(Calendar.YEAR,-20);
+//
+//		}else if(fromTo.equals("20-29")){
+//			//FROMを設定（30年前）
+//			timeFrom.set(Calendar.YEAR,-30);
+//
+//		}else if(fromTo.equals("30-39")){
+//			//FROMを設定（40年前）
+//			timeFrom.set(Calendar.YEAR,-40);
+//
+//		}else if(fromTo.equals("40-49")){
+//			//FROMを設定（50年前）
+//			timeFrom.set(Calendar.YEAR,-50);
+//
+//		}else if(fromTo.equals("50-59")){
+//			//FROMを設定（60年前）
+//			timeFrom.set(Calendar.YEAR,-60);
+//
+//		}else if(fromTo.equals("60-100")){
+//			//FROMを設定（100年前）
+//			timeFrom.set(Calendar.YEAR,-100);
+//
+//		}else{
+//
+//		}
+
 		//全件データ取得
-		List<Shains> shainsSearch = shainsExService.findByShainAll(searchForm.shainNo, searchForm.shainName, searchForm.shainSex, searchForm.shainPostcode, searchForm.shainAddress, searchForm.shainTelno);
+		List<Shains> shainsSearch = shainsExService.findByShainAll(
+				searchForm.shainNo,
+				searchForm.shainName,
+				birthdayFrom,
+				birthdayTo,
+				searchForm.shainSex,
+				searchForm.shainPostcode,
+				searchForm.shainAddress,
+				searchForm.shainTelno);
 		if (shainsSearch.size() != 0) {
 			//TODO 検索結果をDtoに詰め込み、JSONで返却する。
 			SearchResultDto searchResultDto = new SearchResultDto();
@@ -43,7 +105,8 @@ public class SearchAction extends AbstractShainKanriAction {
 			ArrayList<SearchResultItemDto> resultList = new ArrayList<SearchResultItemDto>();
 
 			for(Shains shain : shainsSearch){
-				//
+
+				//取得した１件分のデータを格納
 				SearchResultItemDto itemDto = new SearchResultItemDto();
 				itemDto.shainNo = shain.shainNo;
 				itemDto.shainName = shain.shainName;
@@ -52,7 +115,8 @@ public class SearchAction extends AbstractShainKanriAction {
 				itemDto.shainPostcode = shain.shainPostcode;
 				itemDto.shainAddress = shain.shainAddress;
 				itemDto.shainTelno = shain.shainTelno;
-				//TODO 年齢を算出する。
+				//itemDto.age = age;
+
 				resultList.add(itemDto);
 			}
 
@@ -71,6 +135,24 @@ public class SearchAction extends AbstractShainKanriAction {
 
 			return "search.jsp";
 		}
+	}
+
+	private Date calcBirdayFrom(Integer ageRangeMax) {
+		Date birthdayFrom;
+		//現在の日時を取得(FROM)
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.YEAR, - (ageRangeMax + 1 ));
+		birthdayFrom = cal.getTime();
+		return birthdayFrom;
+	}
+
+	private Date calcBirdayTo(Integer ageRangeMin) {
+		Date birthdayFrom;
+		//現在の日時を取得(FROM)
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.YEAR, - (ageRangeMax + 1 ));
+		birthdayFrom = cal.getTime();
+		return birthdayFrom;
 	}
 }
 

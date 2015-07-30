@@ -20,6 +20,7 @@ public class SearchForm {
 
 	public String shainTelno;
 
-	public String age;
+	//年齢幅
+	public String ageRenge;
 
 }

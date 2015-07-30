@@ -22,4 +22,7 @@ public class SearchResultItemDto {
 
 	public Date lastUpdateTime;
 
+	//年齢
+	public Integer age;
+
 }

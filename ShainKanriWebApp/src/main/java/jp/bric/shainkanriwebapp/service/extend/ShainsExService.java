@@ -2,6 +2,7 @@ package jp.bric.shainkanriwebapp.service.extend;
 
 import static jp.bric.shainkanriwebapp.entity.ShainsNames.*;
 
+import java.util.Date;
 import java.util.List;
 
 import org.seasar.extension.jdbc.where.SimpleWhere;
@@ -25,7 +26,7 @@ public class ShainsExService extends ShainsService {
 	}
 
 	//全社員検索（条件追加）
-	public List<Shains> findByShainAll(String shainNo, String shainName, String shainSex, String shainPostcode, String shainAddress, String shainTelno) {
+	public List<Shains> findByShainAll(String shainNo, String shainName,Date birthdayFrom, Date birthdayTo, String shainSex, String shainPostcode, String shainAddress, String shainTelno) {
 
 		SimpleWhere where = new SimpleWhere();
 
@@ -39,10 +40,14 @@ public class ShainsExService extends ShainsService {
 			where.contains(shainName(), shainName);
 		}
 
-		//年齢がnullでない場合
-//		if(shainName != null){
-//			where.eq(shainName(), shainName);
-//		}
+		//がnullでない場合
+		if(birthdayFrom != null){
+			where.ge(shainBirthday(), birthdayFrom);
+		}
+
+		if(birthdayTo != null){
+			where.lt(shainBirthday(), birthdayTo);
+		}
 
 		//性別がnullでない場合
 		if(shainSex != null && shainSex != ""){

@@ -21,6 +21,6 @@ public class SearchForm {
 	public String shainTelno;
 
 	//年齢幅
-	public String ageRenge;
+	public String ageRange;
 
 }

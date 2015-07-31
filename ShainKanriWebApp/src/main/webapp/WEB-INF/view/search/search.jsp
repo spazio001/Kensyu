@@ -28,7 +28,7 @@
 				</div>
 				<label for="shainBirthday" class="control-label col-lg-1">年齢：</label>
 				<div class="col-lg-2" style="padding: 5px 0">
-					<html:select property="ageRenge" value="none">
+					<html:select property="ageRange" value="none">
 						<html:option value="none">選択してください</html:option>
 						<html:option value="0-9">０～９歳</html:option>
 						<html:option value="10-19">１０～１９歳</html:option>

@@ -40,11 +40,12 @@ public class ShainsExService extends ShainsService {
 			where.contains(shainName(), shainName);
 		}
 
-		//がnullでない場合
+		//年齢（FROM）がnullでない場合
 		if(birthdayFrom != null){
 			where.ge(shainBirthday(), birthdayFrom);
 		}
 
+		//年齢（TO）がnullでない場合
 		if(birthdayTo != null){
 			where.lt(shainBirthday(), birthdayTo);
 		}

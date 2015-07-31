@@ -38,12 +38,11 @@ public class SearchAction extends AbstractShainKanriAction {
 		Date birthdayTo = null;
 
 		//TODO 年齢のFROM-TOをセット
-		if(!(searchForm.ageRenge.equals("none"))){
-			String[] ageRangeArray = searchForm.ageRenge.split("-");
+		if(!(searchForm.ageRange.equals("none"))){
+			String[] ageRangeArray = searchForm.ageRange.split("-");
 
 			birthdayFrom = calcBirdayFrom(Integer.parseInt(ageRangeArray[1]));
 			birthdayTo = calcBirdayTo(Integer.parseInt(ageRangeArray[0]));
-
 
 			//birthdayTo = new Date();
 		}
@@ -115,7 +114,8 @@ public class SearchAction extends AbstractShainKanriAction {
 				itemDto.shainPostcode = shain.shainPostcode;
 				itemDto.shainAddress = shain.shainAddress;
 				itemDto.shainTelno = shain.shainTelno;
-				//itemDto.age = age;
+
+//				itemDto.age = cal;
 
 				resultList.add(itemDto);
 			}
@@ -147,12 +147,12 @@ public class SearchAction extends AbstractShainKanriAction {
 	}
 
 	private Date calcBirdayTo(Integer ageRangeMin) {
-		Date birthdayFrom;
-		//現在の日時を取得(FROM)
+		Date birthdayTo;
+		//現在の日時を取得(TO)
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.YEAR, - (ageRangeMax + 1 ));
-		birthdayFrom = cal.getTime();
-		return birthdayFrom;
+		cal.add(Calendar.YEAR, - (ageRangeMin));
+		birthdayTo = cal.getTime();
+		return birthdayTo;
 	}
 }
 

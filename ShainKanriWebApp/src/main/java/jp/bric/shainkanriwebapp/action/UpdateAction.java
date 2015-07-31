@@ -11,11 +11,11 @@ public class UpdateAction extends AbstractShainKanriAction {
 
 	@ActionForm
 	@Resource
-	protected UpdateForm renewalForm;
+	protected UpdateForm updateForm;
 
 	@Execute(validator = false)
 	public String index() {
-		return "renewal.jsp";
+		return "update.jsp";
 
 	}
 

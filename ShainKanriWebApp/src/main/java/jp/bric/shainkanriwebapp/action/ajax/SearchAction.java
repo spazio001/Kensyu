@@ -40,7 +40,7 @@ public class SearchAction extends AbstractShainKanriAction {
 		Date birthdayTo = null;
 
 		//TODO 年齢のFROM-TOをセット
-		if(!(searchForm.ageRange.equals("none"))){
+		if (!(searchForm.ageRange.equals("none"))) {
 			String[] ageRangeArray = searchForm.ageRange.split("-");
 
 			birthdayFrom = calcBirdayFrom(Integer.parseInt(ageRangeArray[1]));
@@ -50,42 +50,40 @@ public class SearchAction extends AbstractShainKanriAction {
 		}
 
 		//現在の日時を取得(TO)
-//		Date timeTo = new Timestamp(System.currentTimeMillis());
-
-
+		//		Date timeTo = new Timestamp(System.currentTimeMillis());
 
 		//０～９歳が選択されていた場合
-//		if(fromTo.equals("0-9")){
-//			//FROMを設定（10年前）
-//			timeFrom.set(Calendar.YEAR,-10);
-//
-//		}else if(fromTo.equals("10-19")){
-//			//FROMを設定（20年前）
-//			timeFrom.set(Calendar.YEAR,-20);
-//
-//		}else if(fromTo.equals("20-29")){
-//			//FROMを設定（30年前）
-//			timeFrom.set(Calendar.YEAR,-30);
-//
-//		}else if(fromTo.equals("30-39")){
-//			//FROMを設定（40年前）
-//			timeFrom.set(Calendar.YEAR,-40);
-//
-//		}else if(fromTo.equals("40-49")){
-//			//FROMを設定（50年前）
-//			timeFrom.set(Calendar.YEAR,-50);
-//
-//		}else if(fromTo.equals("50-59")){
-//			//FROMを設定（60年前）
-//			timeFrom.set(Calendar.YEAR,-60);
-//
-//		}else if(fromTo.equals("60-100")){
-//			//FROMを設定（100年前）
-//			timeFrom.set(Calendar.YEAR,-100);
-//
-//		}else{
-//
-//		}
+		//		if(fromTo.equals("0-9")){
+		//			//FROMを設定（10年前）
+		//			timeFrom.set(Calendar.YEAR,-10);
+		//
+		//		}else if(fromTo.equals("10-19")){
+		//			//FROMを設定（20年前）
+		//			timeFrom.set(Calendar.YEAR,-20);
+		//
+		//		}else if(fromTo.equals("20-29")){
+		//			//FROMを設定（30年前）
+		//			timeFrom.set(Calendar.YEAR,-30);
+		//
+		//		}else if(fromTo.equals("30-39")){
+		//			//FROMを設定（40年前）
+		//			timeFrom.set(Calendar.YEAR,-40);
+		//
+		//		}else if(fromTo.equals("40-49")){
+		//			//FROMを設定（50年前）
+		//			timeFrom.set(Calendar.YEAR,-50);
+		//
+		//		}else if(fromTo.equals("50-59")){
+		//			//FROMを設定（60年前）
+		//			timeFrom.set(Calendar.YEAR,-60);
+		//
+		//		}else if(fromTo.equals("60-100")){
+		//			//FROMを設定（100年前）
+		//			timeFrom.set(Calendar.YEAR,-100);
+		//
+		//		}else{
+		//
+		//		}
 
 		//全件データ取得
 		List<Shains> shainsSearch = shainsExService.findByShainAll(
@@ -105,7 +103,7 @@ public class SearchAction extends AbstractShainKanriAction {
 
 			ArrayList<SearchResultItemDto> resultList = new ArrayList<SearchResultItemDto>();
 
-			for(Shains shain : shainsSearch){
+			for (Shains shain : shainsSearch) {
 
 				//取得した１件分のデータを格納
 				SearchResultItemDto itemDto = new SearchResultItemDto();
@@ -158,7 +156,7 @@ public class SearchAction extends AbstractShainKanriAction {
 		Date birthdayFrom;
 		//現在の日時を取得(FROM)
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.YEAR, - (ageRangeMax + 1 ));
+		cal.add(Calendar.YEAR, -(ageRangeMax + 1));
 		birthdayFrom = cal.getTime();
 		return birthdayFrom;
 	}
@@ -167,66 +165,74 @@ public class SearchAction extends AbstractShainKanriAction {
 		Date birthdayTo;
 		//現在の日時を取得(TO)
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.YEAR, - (ageRangeMin));
+		cal.add(Calendar.YEAR, -(ageRangeMin));
 		birthdayTo = cal.getTime();
 		return birthdayTo;
 	}
-}
 
-		//TODO 検索結果をDtoに詰め込み、JSONで返却する。
-//		SearchResultDto searchResultDto = new SearchResultDto();
-//		//件数（カウント）の初期化
-//		searchResultDto.count = 0;
-//
-//		ArrayList<SearchResultItemDto> resultList = new ArrayList<SearchResultItemDto>();
-//		resultList.add(ResultData(searchForm.shainNo,searchForm.shainName,searchForm.shainBirthday,searchForm.shainSex,searchForm.shainPostcode,searchForm.shainAddress,searchForm.shainTelno));
-		//resultList.add(
+	//TODO 検索結果をDtoに詰め込み、JSONで返却する。
+	//		SearchResultDto searchResultDto = new SearchResultDto();
+	//		//件数（カウント）の初期化
+	//		searchResultDto.count = 0;
+	//
+	//		ArrayList<SearchResultItemDto> resultList = new ArrayList<SearchResultItemDto>();
+	//		resultList.add(ResultData(searchForm.shainNo,searchForm.shainName,searchForm.shainBirthday,searchForm.shainSex,searchForm.shainPostcode,searchForm.shainAddress,searchForm.shainTelno));
+	//resultList.add(
 
-		//	makeDummyData(5L, "山川１", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(6L, "山川２", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(7L, "山川３", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(8L, "山川４", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(9L, "山川５", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(10L, "山川６", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(11L, "山川７", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(12L, "山川８", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(13L, "山川９", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(14L, "山川１０", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(15L, "山川１１", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(16L, "山川１２", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(17L, "山川１３", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(18L, "山川１４", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(19L, "山川１５", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(20L, "山川１６", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(21L, "山川１７", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(22L, "山川１８", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(23L, "山川１９", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-		//		resultList.add(makeDummyData(24L, "山川２０", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
-//		searchResultDto.resultList = resultList;
-//
-//		String json = JSON.encode(searchResultDto);
-//		ResponseUtil.write(json);
-//
+	//	makeDummyData(5L, "山川１", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(6L, "山川２", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(7L, "山川３", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(8L, "山川４", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(9L, "山川５", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(10L, "山川６", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(11L, "山川７", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(12L, "山川８", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(13L, "山川９", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(14L, "山川１０", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(15L, "山川１１", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(16L, "山川１２", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(17L, "山川１３", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(18L, "山川１４", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(19L, "山川１５", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(20L, "山川１６", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(21L, "山川１７", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(22L, "山川１８", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(23L, "山川１９", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		resultList.add(makeDummyData(24L, "山川２０", "1990/09/09", 1, "1112222", "岐阜県", "1122223333"));
+	//		searchResultDto.resultList = resultList;
+	//
+	//		String json = JSON.encode(searchResultDto);
+	//		ResponseUtil.write(json);
+	//
+	//		return null;
+	//
+	//	}
+
+	//	private SearchResultItemDto resultData(shainsSearch) {
+	//		SearchResultItemDto itemDto = new SearchResultItemDto();
+	//		try {
+	//			itemDto.shainNo = Long.parseLong(shainNo);
+	//			itemDto.shainName = shainName;
+	//			SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+	//			itemDto.shainBirthday = format.parse(shainBirthday);
+	//			itemDto.shainSex = Integer.parseInt(shainSex);
+	//			itemDto.shainPostcode = shainPostcode;
+	//			itemDto.shainAddress = shainAddress;
+	//			itemDto.shainTelno = shainTelno;
+	//			itemDto.insertTime = new Date();
+	//			itemDto.lastUpdateTime = new Date();
+	//		} catch (ParseException e) {
+	//			// TODO 自動生成された catch ブロック
+	//			e.printStackTrace();
+	//		}
+	//		return itemDto;
+	//	}
+
+//	@Execute(validator = false)
+//	public String delete() {
+//		//TODO ラジオボタンにチェックがあるものだけを抽出
+//		//TODO 削除していいのかの確認メッセージをポップアップにて表示
+//		//TODO ServiceクラスにDELETE文を発行してもらい、コンプリート画面に遷移する。
 //		return null;
-//
 //	}
-
-//	private SearchResultItemDto resultData(shainsSearch) {
-//		SearchResultItemDto itemDto = new SearchResultItemDto();
-//		try {
-//			itemDto.shainNo = Long.parseLong(shainNo);
-//			itemDto.shainName = shainName;
-//			SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-//			itemDto.shainBirthday = format.parse(shainBirthday);
-//			itemDto.shainSex = Integer.parseInt(shainSex);
-//			itemDto.shainPostcode = shainPostcode;
-//			itemDto.shainAddress = shainAddress;
-//			itemDto.shainTelno = shainTelno;
-//			itemDto.insertTime = new Date();
-//			itemDto.lastUpdateTime = new Date();
-//		} catch (ParseException e) {
-//			// TODO 自動生成された catch ブロック
-//			e.printStackTrace();
-//		}
-//		return itemDto;
-//	}
+}

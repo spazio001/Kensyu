@@ -166,6 +166,11 @@
 					</div>
 					<div class="col-lg-2">
 						<input type="submit" name="delete" value="社員削除" />
+<%--
+
+						<input type="button" id="deleteButton" name="delete" value="社員削除" />
+--%>
+
 					</div>
 				</div>
 				<div class="col-lg-4"></div>
@@ -196,6 +201,30 @@
 
 				);
 			});
+
+<%--
+			$("#deleteButton").click(function() {
+				$.ajax({
+					type : 'POST',
+					url : "${f:url('/ajax/search')}",
+					data : $("#searchForm").serialize(),
+					dataType : "json",
+					success : function(data, textStatus, jqXHR) {
+						var source = $("#search-result-template").html();
+						var template = Handlebars.compile(source);
+						var html = template(data);
+						$("#searchResultList").empty();
+						$("#searchResultList").html(html);
+						//alert(html)
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						alert("Error")
+					}
+				}
+
+				);
+			});
+--%>
 		});
 	</script>
 </body>

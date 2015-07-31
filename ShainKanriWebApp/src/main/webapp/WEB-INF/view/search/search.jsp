@@ -6,6 +6,8 @@
 <link href="${f:url('/css/bootstrap.min.css')}" rel="stylesheet">
 <script src="${f:url('/js/bootstrap.min.js')}"></script>
 <script src="${f:url('/js/handlebars-v3.0.3.js')}"></script>
+<script src="${f:url('/js/handlebars-intl.min.js')}"></script>
+<script src="${f:url('/js/locale-data/ja.js')}"></script>
 <title>社員検索</title>
 </head>
 <body>
@@ -145,7 +147,7 @@
 						<td align="center";><input type="radio" name="shain" value=""></td>
 						<td>{{shainNo}}</td>
 						<td>{{shainName}}</td>
-						<td>{{shainBirthday}}</td>
+						<td>{{formatDate shainBirthday day="2-digit" month="2-digit" year="numeric"}}</td>
 						<td>{{age}}</td>
 						<td>{{shainSex}}</td>
 						<td>{{shainPostcode}}</td>
@@ -171,6 +173,8 @@
 	</script>
 	<script type="text/javascript">
 		$(function() {
+			HandlebarsIntl.registerWith(Handlebars);
+
 			$("#searchButton").click(function() {
 				$.ajax({
 					type : 'POST',

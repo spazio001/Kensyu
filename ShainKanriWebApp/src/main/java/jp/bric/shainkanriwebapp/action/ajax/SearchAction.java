@@ -1,5 +1,7 @@
 package jp.bric.shainkanriwebapp.action.ajax;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -115,7 +117,22 @@ public class SearchAction extends AbstractShainKanriAction {
 				itemDto.shainAddress = shain.shainAddress;
 				itemDto.shainTelno = shain.shainTelno;
 
-//				itemDto.age = cal;
+				//現在日の取得
+				Calendar now = Calendar.getInstance();
+
+				//現在日をStringにキャスト
+				DateFormat df = new SimpleDateFormat("yyyyMMdd");
+				String real = df.format(now.getTime());
+				//現在日をIntegerにキャスト
+				Integer nowTime = Integer.parseInt(real);
+
+				//誕生日をStringにキャスト
+				String birth = df.format(shain.shainBirthday);
+				//誕生日をIntegerにキャスト
+				Integer birthDay = Integer.parseInt(birth);
+
+				//年齢の算出
+				itemDto.age = ((nowTime - birthDay) / 10000);
 
 				resultList.add(itemDto);
 			}

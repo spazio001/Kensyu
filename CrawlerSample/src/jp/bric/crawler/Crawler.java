@@ -16,12 +16,14 @@ public class Crawler {
 	public void crawl(){
 		try {
 			Document doc = Jsoup.connect("http://en.wikipedia.org/").get();
+
 			Elements newsHeadlines = doc.select("#mp-itn b a");
 
 			Iterator<Element> it = newsHeadlines.iterator();
 			while(it.hasNext()){
 				Element elem = it.next();
 				System.out.println(elem.attr("href"));
+				//System.out.println(elem.attr("title"));
 			}
 
 		} catch (IOException e) {
